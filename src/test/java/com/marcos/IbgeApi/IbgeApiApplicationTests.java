@@ -1,10 +1,10 @@
-package com.marcos.ProjetoIbgeApi;
+package com.marcos.IbgeApi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProjetoIbgeApiApplicationTests {
+class IbgeApiApplicationTests {
 
 	@Test
 	void contextLoads() {
