@@ -7,7 +7,6 @@ import com.marcos.IbgeApi.services.ConsumptionUrlApi;
 
 import java.util.Scanner;
 
-import static java.lang.Thread.yield;
 
 public class NamesMenu {
     Scanner scanner = new Scanner(System.in);
@@ -20,7 +19,7 @@ public class NamesMenu {
     String chosenState;
     int stateCode;
     int chosenDecade;
-    String formatter;
+    String namesUrl;
 
 
     public void displayNamesMenu() {
@@ -48,16 +47,18 @@ public class NamesMenu {
                         "de seus registros por época");
                 chosenName = scanner.nextLine();
 
-                formatter = consumption.getDataApi("https://servicodados.ibge.gov.br/api/v2/censos/nomes/" + chosenName);
+                namesUrl = consumption.getDataApi("https://servicodados.ibge.gov.br/api/v2/censos/nomes/" + chosenName);
 
                 try {
-                    JsonNode jsonNode = mapper.readTree(formatter);
+                    //Deixa o JSON main bonito/legível:
+
+                    JsonNode jsonNode = mapper.readTree(namesUrl);
 
                     String jsonFormatted = jsonNode.toPrettyString();
 
                     System.out.println(jsonFormatted);
                 } catch (JsonProcessingException e) {
-                    System.err.println("Erro ao processar JSON: " + e.getMessage());
+                    System.out.println("Erro ao processar JSON: " + e.getMessage());
                 }
             }
             case 2 -> {
@@ -65,16 +66,16 @@ public class NamesMenu {
                         "para ver o top 20 de nomes mais registrados na história do estado.");
                 chosenState = scanner.nextLine().toUpperCase();
                 statesConverter(chosenState);
-                formatter = consumption.getDataApi("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking?localidade=" + stateCode);
+                namesUrl = consumption.getDataApi("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking?localidade=" + stateCode);
 
                 try {
-                    JsonNode jsonNode = mapper.readTree(formatter);
+                    JsonNode jsonNode = mapper.readTree(namesUrl);
 
                     String jsonFormatted = jsonNode.toPrettyString();
 
                     System.out.println(jsonFormatted);
                 } catch (JsonProcessingException e) {
-                    System.err.println("Erro ao processar JSON: " + e.getMessage());
+                    System.out.println("Erro ao processar JSON: " + e.getMessage());
                 }
             }
             case 3 -> {
@@ -83,15 +84,15 @@ public class NamesMenu {
                 chosenDecade = scanner.nextInt();
                 scanner.nextLine();
 
-                formatter = consumption.getDataApi("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking/?decada=" + chosenDecade);
+                namesUrl = consumption.getDataApi("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking/?decada=" + chosenDecade);
                 try {
-                    JsonNode jsonNode = mapper.readTree(formatter);
+                    JsonNode jsonNode = mapper.readTree(namesUrl);
 
                     String jsonFormatted = jsonNode.toPrettyString();
 
                     System.out.println(jsonFormatted);
                 } catch (JsonProcessingException e) {
-                    System.err.println("Erro ao processar JSON: " + e.getMessage());
+                    System.out.println("Erro ao processar JSON: " + e.getMessage());
                 }
             }
             default -> System.out.println("Opção Inválida");
@@ -123,7 +124,7 @@ public class NamesMenu {
 
             case ("RN") -> stateCode = 24;
 
-            case ("PB")-> stateCode = 25;
+            case ("PB") -> stateCode = 25;
 
             case ("PE") -> stateCode = 26;
 

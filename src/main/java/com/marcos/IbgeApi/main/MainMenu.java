@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class MainMenu {
     Scanner scanner = new Scanner(System.in);
     NamesMenu namesMenu = new NamesMenu();
+    CountriesMenu countriesMenu = new CountriesMenu();
+    NewsMenu newsMenu = new NewsMenu();
 
     int option;
 
@@ -23,7 +25,7 @@ public class MainMenu {
         Voce quer saber mais sobre:
             1 - Notícias IBGE;
             2 - Países;
-            3 - Historiograma: Nomes no Brasil;
+            3 - Registro de Nomes no Brasil;
             4 - Sair.
         """);
             option = scanner.nextInt();
@@ -32,13 +34,8 @@ public class MainMenu {
 
 
             switch (option){
-                case 1 -> {
-
-
-                }
-                case 2 -> {
-
-                }
+                case 1 -> newsMenu.displayNewsMenu();
+                case 2 -> countriesMenu.displayCountriesMenu();
                 case 3 -> namesMenu.displayNamesMenu();
                 case 4 -> System.out.println("Adeus!!");
                 default -> System.out.println("Opcao Inválida!");
