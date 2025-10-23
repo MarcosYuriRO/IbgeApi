@@ -1,6 +1,7 @@
 package com.marcos.IbgeApi.main;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.marcos.IbgeApi.model.countries.AllNameCountries;
 import com.marcos.IbgeApi.model.countries.Capital;
@@ -63,30 +64,32 @@ public class CountriesMenu {
                 try {
                     List<Countries> countriesList = mapper.readValue(
                             countriesUrl,
-                            new com.fasterxml.jackson.core.type.TypeReference<List<Countries>>() {}
+                            new TypeReference<List<Countries>>() {}
                     );
+
                     guess = "";
                     exit = "";
                     while(!exit.equalsIgnoreCase("S")){
                         System.out.println("Tente adivinhar qual país tem esta capital:");
                         Countries countryModel = countriesList.get(generateMathRandom());
-                        CapitalName guessCapital = new CapitalName(countryModel.capitalCountry().capital().getCapitalName());
+                        String guessCapital = countryModel.capitalCountry().capital().getCapitalName();
                         System.out.println(guessCapital);
-                        AllNameCountries guessCountry = new AllNameCountries(countryModel.name().nameCountrie());
-                        System.out.println(guessCountry);
+                        String guessCountry = countryModel.name().nameCountrie();
+                        System.out.println(guessCountry.substring(0, 3));
 
                         guess = scanner.nextLine();
 
-                        if (guess.equalsIgnoreCase(String.valueOf(guessCountry))){
+                        if (guess.equalsIgnoreCase(guessCountry)){
                             System.out.println("Você Acertou!!");
                         } else {
                             System.out.println("Você Errou!");
+
+                            System.out.println("O nome do país era " + countryModel.name());
                         }
 
-                        System.out.println(countryModel.name());
 
                         System.out.println("Caso queira sair do Quiz," +
-                                    "clique 'S', se não, clique qualquer outra tecla.");
+                                    " clique 'S', se não, clique qualquer outra tecla.");
                         exit = scanner.nextLine();
 
                     }

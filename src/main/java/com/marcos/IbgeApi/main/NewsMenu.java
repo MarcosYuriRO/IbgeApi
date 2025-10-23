@@ -33,7 +33,9 @@ public class NewsMenu {
         String newsUrl = consumption.getDataApi("https://servicodados.ibge.gov.br/api/v3/noticias/?page=" + page);
         try {
             TotalNews totalNews = mapper.readValue(newsUrl, TotalNews.class);
+            //cria um objeto com todas as notícias de determinada página
             List<News> newsList = totalNews.items();
+            //Cria uma lista com todas as notícias para as exibir separadamente
             counter = 0;
             option = "";
 
@@ -47,7 +49,7 @@ public class NewsMenu {
                 } else {
                 System.out.println("\nCaso queira sair das notícias, clique 'S', " +
                         "se não, clique qualquer outra tecla!");
-                option = scanner.nextLine();
+                    option = scanner.nextLine();
                 }
 
             }

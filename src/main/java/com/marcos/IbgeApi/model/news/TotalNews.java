@@ -6,10 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record TotalNews(@JsonAlias("items") TotalNews listNews,
-                        List<News> items) {
-    @Override
-    public String toString() {
-        return "\n" + listNews;
-    }
+public record TotalNews(List<News> items) {
 }
+
+//Cria uma lista de da classe News, onde ela exibe as características de cada notícia, uma por vez.

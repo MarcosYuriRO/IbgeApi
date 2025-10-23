@@ -53,10 +53,9 @@ public class NamesMenu {
                     //Deixa o JSON main bonito/legível:
 
                     JsonNode jsonNode = mapper.readTree(namesUrl);
-
                     String jsonFormatted = jsonNode.toPrettyString();
-
                     System.out.println(jsonFormatted);
+
                 } catch (JsonProcessingException e) {
                     System.out.println("Erro ao processar JSON: " + e.getMessage());
                 }
@@ -70,10 +69,9 @@ public class NamesMenu {
 
                 try {
                     JsonNode jsonNode = mapper.readTree(namesUrl);
-
                     String jsonFormatted = jsonNode.toPrettyString();
-
                     System.out.println(jsonFormatted);
+
                 } catch (JsonProcessingException e) {
                     System.out.println("Erro ao processar JSON: " + e.getMessage());
                 }
@@ -87,10 +85,9 @@ public class NamesMenu {
                 namesUrl = consumption.getDataApi("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking/?decada=" + chosenDecade);
                 try {
                     JsonNode jsonNode = mapper.readTree(namesUrl);
-
                     String jsonFormatted = jsonNode.toPrettyString();
-
                     System.out.println(jsonFormatted);
+
                 } catch (JsonProcessingException e) {
                     System.out.println("Erro ao processar JSON: " + e.getMessage());
                 }
