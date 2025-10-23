@@ -68,7 +68,11 @@ public class NamesMenu {
                 namesUrl = consumption.getDataApi("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking?localidade=" + stateCode);
 
                 try {
+                    //ObjectMapper
+                        //Serializar: Escreve Objeto Java em Json
+                        //Desserializar: Lê Json em Objeto Java
                     JsonNode jsonNode = mapper.readTree(namesUrl);
+                    //readTree: Armazena o json numa "árvore" ao invés de em uma classe java como o readValue
                     String jsonFormatted = jsonNode.toPrettyString();
                     System.out.println(jsonFormatted);
 

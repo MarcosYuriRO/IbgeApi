@@ -112,7 +112,4 @@ public class CountriesMenu {
         return randomNumber;
     }
 
-    private String countryAbreviator(String countryTiped){
-        return "";
-    }
 }

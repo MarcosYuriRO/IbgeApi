@@ -41,7 +41,6 @@ public class NewsMenu {
 
             while (!option.equalsIgnoreCase("S")){
                 System.out.println(newsList.get(counter));
-                counter++;
 
                 if (newsList.size() == counter) {
                     System.out.println("\nFim da página!");
@@ -51,7 +50,7 @@ public class NewsMenu {
                         "se não, clique qualquer outra tecla!");
                     option = scanner.nextLine();
                 }
-
+                counter++;
             }
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
