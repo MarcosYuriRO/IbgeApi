@@ -44,7 +44,7 @@ public class NamesMenu {
         switch (option) {
             case 1 -> {
                 System.out.println("Escreva um nome para ver a quantidade" +
-                        "de seus registros por época");
+                        " de seus registros por época");
                 chosenName = scanner.nextLine();
 
                 namesUrl = consumption.getDataApi("https://servicodados.ibge.gov.br/api/v2/censos/nomes/" + chosenName);
