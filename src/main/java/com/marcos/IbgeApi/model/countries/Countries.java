@@ -16,6 +16,6 @@ public record Countries(@JsonAlias("nome") AllNameCountries name,
 
     @Override
     public String toString() {
-        return name + "\n" + totalArea + "\n" + capitalCountry;
+        return name + "\n" + totalArea + "\n" + capitalCountry + "\n";
     }
 }

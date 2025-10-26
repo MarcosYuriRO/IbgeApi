@@ -50,12 +50,17 @@ public class CountriesMenu {
                 String countriesUrl = consumption.getDataApi("https://servicodados.ibge.gov.br/api/v1/paises/" + chosenCountry);
                 try {
                     Countries[] countriesList = mapper.readValue(countriesUrl, Countries[].class);
-                    for (Countries nation : countriesList){
-                        System.out.println(nation);
+                    if(countriesList.length == 0) {
+                        System.out.println("País não encontrado.");
+                    } else {
+                        for (Countries nation : countriesList) {
+                            System.out.println(nation);
+                        }
                     }
                 } catch (JsonProcessingException e) {
                     throw new RuntimeException(e);
                 }
+                scanner.nextLine();
 
             }
             case 2 -> {
@@ -103,7 +108,6 @@ public class CountriesMenu {
             default -> System.out.println("Opção Inválida!");
         }
 
-        scanner.nextLine();
     }
 
     private int generateMathRandom() {

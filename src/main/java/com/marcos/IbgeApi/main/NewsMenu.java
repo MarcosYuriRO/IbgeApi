@@ -41,16 +41,16 @@ public class NewsMenu {
 
             while (!option.equalsIgnoreCase("S")){
                 System.out.println(newsList.get(counter));
-
+                counter++;
                 if (newsList.size() == counter) {
                     System.out.println("\nFim da página!");
                     option = "S";
+                    scanner.nextLine();
                 } else {
                 System.out.println("\nCaso queira sair das notícias, clique 'S', " +
                         "se não, clique qualquer outra tecla!");
                     option = scanner.nextLine();
                 }
-                counter++;
             }
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
