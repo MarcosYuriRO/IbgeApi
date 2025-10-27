@@ -3,12 +3,7 @@ package com.marcos.IbgeApi.main;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.marcos.IbgeApi.model.countries.AllNameCountries;
-import com.marcos.IbgeApi.model.countries.Capital;
-import com.marcos.IbgeApi.model.countries.CapitalName;
 import com.marcos.IbgeApi.model.countries.Countries;
-import com.marcos.IbgeApi.model.news.News;
-import com.marcos.IbgeApi.model.news.TotalNews;
 import com.marcos.IbgeApi.services.ConsumptionUrlApi;
 
 import java.util.List;

@@ -32,8 +32,7 @@ public class NamesMenu {
                 Escolha qual opcão voce busca:
                 
                 1 - Procurar pelos registros de um nome;
-                2 - Procurar os nomes mais registrados na história de um estado;
-                3 - Procurar o histórico por uma década em específico.
+                2 - Procurar o histórico por uma década em específico.
                 
                 """);
 
@@ -60,27 +59,8 @@ public class NamesMenu {
                     System.out.println("Erro ao processar JSON: " + e.getMessage());
                 }
             }
+
             case 2 -> {
-                System.out.println("Digite a abreviação de um estado brasileiro " +
-                        "para ver o top 20 de nomes mais registrados na história do estado.");
-                chosenState = scanner.nextLine().toUpperCase();
-                statesConverter(chosenState);
-                namesUrl = consumption.getDataApi("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking?localidade=" + stateCode);
-
-                try {
-                    //ObjectMapper
-                        //Serializar: Escreve Objeto Java em Json
-                        //Desserializar: Lê Json em Objeto Java
-                    JsonNode jsonNode = mapper.readTree(namesUrl);
-                    //readTree: Armazena o json numa "árvore" ao invés de em uma classe java como o readValue
-                    String jsonFormatted = jsonNode.toPrettyString();
-                    System.out.println(jsonFormatted);
-
-                } catch (JsonProcessingException e) {
-                    System.out.println("Erro ao processar JSON: " + e.getMessage());
-                }
-            }
-            case 3 -> {
                 System.out.println("Digite uma década, de 1930 a 2010 e veja o top 20 " +
                         "de nomes mais registrados durante esta época.");
                 chosenDecade = scanner.nextInt();
@@ -101,63 +81,4 @@ public class NamesMenu {
         scanner.nextLine();
     }
 
-    private int statesConverter(String stateAbreviation) {
-        switch (stateAbreviation) {
-            case ("RO") -> stateCode = 11;
-
-            case ("AC") -> stateCode = 12;
-
-            case ("AM") -> stateCode = 13;
-
-            case ("RR") -> stateCode = 14;
-
-            case ("PA") -> stateCode = 15;
-
-            case ("AP") -> stateCode = 16;
-
-            case ("TO") -> stateCode = 17;
-
-            case ("MA") -> stateCode = 21;
-
-            case ("PI") -> stateCode = 22;
-
-            case ("CE") -> stateCode = 23;
-
-            case ("RN") -> stateCode = 24;
-
-            case ("PB") -> stateCode = 25;
-
-            case ("PE") -> stateCode = 26;
-
-            case ("AL") -> stateCode = 27;
-
-            case ("SE") -> stateCode = 28;
-
-            case ("BA") -> stateCode = 29;
-
-            case ("MG") -> stateCode = 31;
-
-            case ("ES") -> stateCode = 32;
-
-            case ("RJ") -> stateCode = 33;
-
-            case ("SP") -> stateCode = 35;
-
-            case ("PR") -> stateCode = 41;
-
-            case ("SC") -> stateCode = 42;
-
-            case ("RS") -> stateCode = 43;
-
-            case ("MS") -> stateCode = 50;
-
-            case ("MT") -> stateCode = 51;
-
-            case ("GO") -> stateCode = 52;
-
-            case ("DF") -> stateCode = 53;
-        }
-        return stateCode;
-
-    }
 }
