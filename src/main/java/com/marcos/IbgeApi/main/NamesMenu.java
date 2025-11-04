@@ -16,8 +16,6 @@ public class NamesMenu {
 
     int option;
     String chosenName;
-    String chosenState;
-    int stateCode;
     int chosenDecade;
     String namesUrl;
 
